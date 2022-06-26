@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
-import { Subject, of, BehaviorSubject } from 'rxjs';
-import { FormlyFieldConfig, FormlyFieldConfigCache } from '../../models';
 import { createBuilder } from '@ngx-formly/core/testing';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { FormlyFieldConfig, FormlyFieldConfigCache } from '../../models';
 
 function buildField({ model, options, ...field }: FormlyFieldConfigCache): FormlyFieldConfigCache {
   const builder = createBuilder({
@@ -502,7 +502,7 @@ describe('FieldExpressionExtension', () => {
           });
 
         expect(build).toThrowError(
-          /\[Formly Error\] \[Expression "nested.prop"\] Cannot set property 'prop' of undefined/i,
+          `Formly Error\] \[Expression "nested.prop"\] [Formly Error] [Expression \"nested.prop\"] Cannot set properties of undefined (setting 'prop')`,
         );
       });
     });
